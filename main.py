@@ -9,18 +9,53 @@ import requests
 from pickle import dumps
 
 def main():
-    r1 = requests.get('http://192.168.0.242/prms.json')
-    # print('prms.json')
-    # print(r1.text)
-    jsonData = r1.text
-    dictReceive = json.loads(jsonData)
-    print(dictReceive)
+    # r1 = requests.get('http://192.168.0.242/prms.json')
+    # # print('prms.json')
+    # # print(r1.text)
+    # jsonData = r1.text
+    # dictReceive = json.loads(jsonData)
+    # print(dictReceive)
 
-    with open('test_case10.json', 'r') as test_case:
+    with open('test_case1.json', 'r') as test_case:
         dictEtalon = json.loads(test_case.read())
     print(dictEtalon)
-    print(math.floor(float(dictEtalon.get('commands')[0].get('IP_voltage_V'))))
-    # print(dictReceive.values())
+    #print(math.floor(float(dictEtalon.get('commands')[0].get("IP_fault_voltage_V"))))
+    with open('prms.json', 'r') as prms:
+        dictReceive = json.loads(prms.read())
+    print(dictReceive)
+    #print(dictReceive.get('IP_voltage_V'))
+    if (math.floor(float(dictEtalon.get('commands')[0].get('IP_voltage_V'))))==dictReceive.get('IP_voltage_V'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('IP_fault_voltage_V'))))==dictReceive.get('IP_fault_voltage_V'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('OP_voltage_V'))))==dictReceive.get('OP_voltage_V'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('OP_current_PERC'))))==dictReceive.get('OP_current_PERC'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('IP_freq_HZ'))))==dictReceive.get('IP_freq_HZ'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('BATT_V'))))==dictReceive.get('BATT_V'):
+        print(True)
+    else:
+        print(dictReceive.get('BATT_V'))
+    if (math.floor(float(dictEtalon.get('commands')[0].get('Temp_DEG'))))==dictReceive.get('Temp_DEG'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_7_Utility_fault__'))))==dictReceive.get('_7_Utility_fault__'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_5_Bypass_act__'))))==dictReceive.get('_5_Bypass_act__'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_4_UPS_failed__'))))==dictReceive.get('_4_UPS_failed__'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_3_UPS_type__'))))==dictReceive.get('_3_UPS_type__'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_2_Test_in_progress__'))))==dictReceive.get('_2_Test_in_progress__'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_1_Shutdown_act__'))))==dictReceive.get('_1_Shutdown_act__'):
+        print(True)
+    if (math.floor(float(dictEtalon.get('commands')[0].get('_0_Beeper_on__'))))==dictReceive.get('_0_Beeper_on__'):
+        print(True)
+
+
 
 
 
