@@ -4,9 +4,11 @@
 
 import json
 import math
+import os
 from re import T
 import requests
 from pickle import dumps
+
 
 def main():
     # r1 = requests.get('http://192.168.0.242/prms.json')
@@ -19,45 +21,50 @@ def main():
     with open('test_case1.json', 'r') as test_case:
         dictEtalon = json.loads(test_case.read())
     print(dictEtalon)
-    #print(math.floor(float(dictEtalon.get('commands')[0].get("IP_fault_voltage_V"))))
+    # print(math.floor(float(dictEtalon.get('commands')[0].get("IP_fault_voltage_V"))))
     with open('prms.json', 'r') as prms:
         dictReceive = json.loads(prms.read())
     print(dictReceive)
-    #print(dictReceive.get('IP_voltage_V'))
-    if (math.floor(float(dictEtalon.get('commands')[0].get('IP_voltage_V'))))==dictReceive.get('IP_voltage_V'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('IP_fault_voltage_V'))))==dictReceive.get('IP_fault_voltage_V'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('OP_voltage_V'))))==dictReceive.get('OP_voltage_V'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('OP_current_PERC'))))==dictReceive.get('OP_current_PERC'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('IP_freq_HZ'))))==dictReceive.get('IP_freq_HZ'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('BATT_V'))))==dictReceive.get('BATT_V'):
-        print(True)
-    else:
-        print(dictReceive.get('BATT_V'))
-    if (math.floor(float(dictEtalon.get('commands')[0].get('Temp_DEG'))))==dictReceive.get('Temp_DEG'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_7_Utility_fault__'))))==dictReceive.get('_7_Utility_fault__'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_5_Bypass_act__'))))==dictReceive.get('_5_Bypass_act__'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_4_UPS_failed__'))))==dictReceive.get('_4_UPS_failed__'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_3_UPS_type__'))))==dictReceive.get('_3_UPS_type__'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_2_Test_in_progress__'))))==dictReceive.get('_2_Test_in_progress__'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_1_Shutdown_act__'))))==dictReceive.get('_1_Shutdown_act__'):
-        print(True)
-    if (math.floor(float(dictEtalon.get('commands')[0].get('_0_Beeper_on__'))))==dictReceive.get('_0_Beeper_on__'):
-        print(True)
 
-
-
-
+    # print(dictReceive.get('IP_voltage_V'))
+    def compareprms():
+        if (math.floor(float(dictEtalon.get('commands')[0].get('IP_voltage_V')))) == dictReceive.get('IP_voltage_V'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('IP_fault_voltage_V')))) == dictReceive.get(
+                'IP_fault_voltage_V'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('OP_voltage_V')))) == dictReceive.get('OP_voltage_V'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('OP_current_PERC')))) == dictReceive.get('OP_current_PERC'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('IP_freq_HZ')))) == dictReceive.get('IP_freq_HZ'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('BATT_V')))) == dictReceive.get('BATT_V'):
+            print(True)
+        else:
+            print(dictReceive.get('BATT_V'))
+        if (math.floor(float(dictEtalon.get('commands')[0].get('Temp_DEG')))) == dictReceive.get('Temp_DEG'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_7_Utility_fault__')))) == dictReceive.get(
+                '_7_Utility_fault__'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_5_Bypass_act__')))) == dictReceive.get('_5_Bypass_act__'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_4_UPS_failed__')))) == dictReceive.get('_4_UPS_failed__'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_3_UPS_type__')))) == dictReceive.get('_3_UPS_type__'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_2_Test_in_progress__')))) == dictReceive.get(
+                '_2_Test_in_progress__'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_1_Shutdown_act__')))) == dictReceive.get(
+                '_1_Shutdown_act__'):
+            print(True)
+        if (math.floor(float(dictEtalon.get('commands')[0].get('_0_Beeper_on__')))) == dictReceive.get('_0_Beeper_on__'):
+            print(True)
+    #compareprms()
+    for filename in ['test_case1.json', 'test_case2.json', 'test_case3.json', 'test_case4.json', 'test_case5.json', 'test_case6.json', 'test_case7.json', 'test_case8.json', 'test_case9.json', 'test_case10.json']:
+        compareprms()
 
     '''
     r2 = requests.get('http://192.168.0.242/prms2.json')
@@ -101,51 +108,7 @@ def main():
     logger = r11.text
     print(logger)
     '''
-    # def compareDicts(a: dict[str, T], b: dict[str, T]):
-    #     result = {}
-    #
-    #     for fieldName in a:
-    #         compareItem = {'left': a[fieldName]}
-    #         if b.keys().__contains__(fieldName):
-    #             compareItem['right'] = b[fieldName]
-    #             if isinstance(compareItem['left'], (float, int)) & isinstance(compareItem['right'], (float, int)):
-    #                 compareItem['equals'] = int(compareItem['left']) == int(compareItem['right'])
-    #             else:
-    #                 compareItem['equals'] = False
-    #         else:
-    #             compareItem['right'] = None
-    #             compareItem['equals'] = False
-    #
-    #         result[fieldName] = compareItem
-    #
-    #     for fieldName in b:
-    #         if not result.keys().__contains__(fieldName):
-    #             compareItem = {
-    #                 'left': None,
-    #                 'right': b[fieldName],
-    #                 'equals': False
-    #             }
-    #
-    #             result[fieldName] = compareItem
-    #
-    #     return result
-    #
-    # with open('test_case10.json', 'r') as test_data:
-    #     case10 = test_data.read()
-    #     dict1 = prms
-    #     dict2 = case10
-    """
-    with open('prms.json', 'w') as my_file:
-        my_file.write(prms)
-    """
 
-
-
-    # compareResult = compareDicts(dict1, dict2)
-    # for field in compareResult:
-    #     compareItem = compareResult[field]
-    #     if not compareItem['equals']:
-    #         print('field %s differs: %s and %s' % (field, compareItem['left'], compareItem['right']))
 
 
 

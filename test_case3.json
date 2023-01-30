@@ -1,0 +1,73 @@
+{
+  "product": "Skeleton_for_python_MEGA3PH_emulator",
+  "case": "Высокое напряжение",
+  "releaseDate": "2022-05-13T00:00:00.000Z",
+  "Release": false,
+  "commands": [
+    {
+      "description": "статус ибп",
+      "reference": "_task_megatech_command_Q1",
+      "request": "Q1",
+      "start_flag": "(",
+      "IP_voltage_V": "302.0",
+      "IP_fault_voltage_V": "120.0",
+      "OP_voltage_V": "220.1",
+      "OP_current_PERC": "000",
+      "IP_freq_HZ": "53.8",
+      "BATT_V": "2.17",
+      "Temp_DEG": "24.0",
+      "_7_Utility_fault__": "0",
+      "_6_Batt_low__": "0",
+      "_5_Bypass_act__": "0",
+      "_4_UPS_failed__": "0",
+      "_3_UPS_type__": "0",
+      "_2_Test_in_progress__": "0",
+      "_1_Shutdown_act__": "0",
+      "_0_Beeper_on__": "1",
+      "DEBUG": "(MMM.M NNN.N PPP.P QQQ RR.R S.SS TT.T 76543210",
+      "DEFAULT_ANSWER": "(302.0 120.0 220.1 000 53.8 2.17 24.0 00000001"
+    },
+    {
+      "description": "UPS Information Command:",
+      "reference": "_task_megatech_command_Information_I",
+      "request": "I",
+      "start_flag": "#",
+      "Company_NAME_15": "MegaTec^^^^^^^^",
+      "UPS_MODEL_10": "M1000K^^^^",
+      "UPS_VERSION_10": "V001203.12",
+      "DEBUG": "#Company_Name UPS_Model Version",
+      "DEFAULT_ANSWER": "#MegaTec         M1000K     V001203.12"
+    },
+    {
+      "description": "UPS Rating Information",
+      "reference": "_task_megatech_command_F_Rating",
+      "request": "F",
+      "start_flag": "#",
+      "Rating_VOLTAGE": "220.0",
+      "Rating_CURRENT": "004",
+      "Battery_VOLTAGE": "24.00",
+      "Frequency": "50.0",
+      "DEBUG": "#MMM.M QQQ SS.SS RR.R",
+      "DEFAULT_ANSWER": "#220.0 004 24.00 50.0"
+    },
+    {
+      "description": "относительная емкость АКБ",
+      "reference": "_task_megatech_command_Battery_percent",
+      "request": "BP",
+      "start_flag": "#",
+      "Battery_PERCENT": "0770",
+      "DEBUG": "проценты",
+      "DEFAULT_ANSWER": "#0770"
+    },
+    {
+      "description": "относительная время работы ИБП в минутах и текущий ток",
+      "reference": "_task_megatech_command_Battery_time",
+      "request": "BT",
+      "start_flag": "#",
+      "Battery_Minutes": "0119",
+      "Battery_Current": "000.7",
+      "DEBUG": "минуты(4с) ток(ампер)",
+      "DEFAULT_ANSWER": "#0119 000.7"
+    }
+  ]
+}
