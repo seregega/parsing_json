@@ -1,0 +1,11 @@
+{"SYS_UPTIME":  25121452,
+"upsIdentModel":"                                                  MKI111/MKI211",
+"upsIdentUPSSoftwareVersion":"                                                      M06_U0003",
+"MAC_ADDR":"00:80:e1:00:42:42",
+"UPS_DATE":"30.11.2022",
+"UPS_SERIAL":"                MKI111S22010999",
+"SNMP_SYSNAME":"                      SNMP name",
+"SNMP_SYSCONTACT":"                   SNMP contact",
+"SNMP_SYSLOCATION":"                  SNMP location",
+"SNMP_SYSDESCR":"               SNMP description"
+}

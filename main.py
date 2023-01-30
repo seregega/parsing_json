@@ -18,11 +18,11 @@ def main():
     # dictReceive = json.loads(jsonData)
     # print(dictReceive)
 
-    with open('test_case1.json', 'r') as test_case:
+    with open('test_case2.json', 'r') as test_case:
         dictEtalon = json.loads(test_case.read())
     print(dictEtalon)
     # print(math.floor(float(dictEtalon.get('commands')[0].get("IP_fault_voltage_V"))))
-    with open('prms.json', 'r') as prms:
+    with open('prms_2run.json', 'r') as prms:
         dictReceive = json.loads(prms.read())
     print(dictReceive)
 
