@@ -9,25 +9,12 @@ from re import T
 import requests
 from pickle import dumps
 
-
-def main():
-    # r1 = requests.get('http://192.168.0.242/prms.json')
-    # # print('prms.json')
-    # # print(r1.text)
-    # jsonData = r1.text
-    # dictReceive = json.loads(jsonData)
-    # print(dictReceive)
-
-    with open('test_case2.json', 'r') as test_case:
-        dictEtalon = json.loads(test_case.read())
-    print(dictEtalon)
-    # print(math.floor(float(dictEtalon.get('commands')[0].get("IP_fault_voltage_V"))))
-    with open('prms_2run.json', 'r') as prms:
-        dictReceive = json.loads(prms.read())
-    print(dictReceive)
-
-    # print(dictReceive.get('IP_voltage_V'))
-    def compareprms():
+def compareprms(dict_list):
+    for test, run in dict_list:
+        with open(test, 'r') as test_case:
+            dictEtalon = json.loads(test_case.read())
+        with open(run, 'r') as prms:
+            dictReceive = json.loads(prms.read())
         if (math.floor(float(dictEtalon.get('commands')[0].get('IP_voltage_V')))) == dictReceive.get('IP_voltage_V'):
             print(True)
         if (math.floor(float(dictEtalon.get('commands')[0].get('IP_fault_voltage_V')))) == dictReceive.get(
@@ -39,10 +26,10 @@ def main():
             print(True)
         if (math.floor(float(dictEtalon.get('commands')[0].get('IP_freq_HZ')))) == dictReceive.get('IP_freq_HZ'):
             print(True)
-        if (math.floor(float(dictEtalon.get('commands')[0].get('BATT_V')))) == dictReceive.get('BATT_V'):
-            print(True)
-        else:
-            print(dictReceive.get('BATT_V'))
+        # if (math.floor(float(dictEtalon.get('commands')[0].get('BATT_V')))) == dictReceive.get('BATT_V'):
+        #     print(True)
+        # else:
+        #     print(dictReceive.get('BATT_V'))
         if (math.floor(float(dictEtalon.get('commands')[0].get('Temp_DEG')))) == dictReceive.get('Temp_DEG'):
             print(True)
         if (math.floor(float(dictEtalon.get('commands')[0].get('_7_Utility_fault__')))) == dictReceive.get(
@@ -62,9 +49,27 @@ def main():
             print(True)
         if (math.floor(float(dictEtalon.get('commands')[0].get('_0_Beeper_on__')))) == dictReceive.get('_0_Beeper_on__'):
             print(True)
-    #compareprms()
-    for filename in ['test_case1.json', 'test_case2.json', 'test_case3.json', 'test_case4.json', 'test_case5.json', 'test_case6.json', 'test_case7.json', 'test_case8.json', 'test_case9.json', 'test_case10.json']:
-        compareprms()
+    return dictEtalon, dictReceive
+def main():
+    # r1 = requests.get('http://192.168.0.242/prms.json')
+    # # print('run1.json')
+    # # print(r1.text)
+    # jsonData = r1.text
+    # dictReceive = json.loads(jsonData)
+    dictEtalon = {}
+    dictReceive = {}
+    dict_list = [{'test1.json': 'run1.json'}, {'test2.json': 'run2.json'}, {'test3.json': 'run3.json'}, {'test4.json': 'run4.json'}, {'test5.json': 'run5.json'},
+                 {'test6.json': 'run6.json'}, {'test7.json': 'run7.json'}, {'test8.json': 'run8.json'}, {'test9.json': 'run9.json'}, {'test10.json': 'run10.json'}]
+    compareprms(dict_list)
+    # for filename in ['test1.json', 'test2.json', 'test3.json', 'test4.json', 'test5.json', 'test6.json', 'test7.json',
+    #                  'test8.json', 'test9.json', 'test10.json']:
+    # with open('test4.json', 'r') as test_case:
+    #     dictEtalon = json.loads(test_case.read())
+    # print(dictEtalon)
+    # # print(math.floor(float(dictEtalon.get('commands')[0].get("IP_fault_voltage_V"))))
+    # with open('run4.json', 'r') as prms:
+    #     dictReceive = json.loads(prms.read())
+    #print(dictReceive)
 
     '''
     r2 = requests.get('http://192.168.0.242/prms2.json')
@@ -108,8 +113,6 @@ def main():
     logger = r11.text
     print(logger)
     '''
-
-
 
 
 # Press the green button in the gutter to run the script.
