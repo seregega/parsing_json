@@ -3,6 +3,8 @@ import math
 import os
 import requests
 from pickle import dumps
+
+
 def compare_snmpS5():
     r8 = requests.get('http://192.168.0.242/snmpS5.json')
     print('snmpS5')
@@ -18,12 +20,17 @@ def compare_snmpS5():
         else:
             print(i, '___=====FAIL=====___', receivesnmpS5.get(i))
     print('\n')
-    if snmpS5.get('time') <= receivesnmpS5.get('time'):
-        print('time: PASS')
-    else:
-        print('time: ___=====FAIL=====___')
-    print(type(snmpS5.get('time')))
-    if snmpS5.get('time') != '':
+    # if snmpS5.get('time') <= receivesnmpS5.get('time'):
+    #     print('time: PASS')
+    # else:
+    #     print('time: ___=====FAIL=====___')
+    # print(type(snmpS5.get('time')))
+    # 'str'
+    # d=receivesnmpS5.get('time')
+    # c=receivesnmpS5.get('time').strip().isdecimal()
+    # a = str.isdecimal(receivesnmpS5.get('time'))
+    # b = int(receivesnmpS5.get('time'))
+    if ((receivesnmpS5.get('time').strip().isdecimal()) and (int(receivesnmpS5.get('time')) > 0)):
         print('time: PASS')
     else:
         print('time: ___=====FAIL=====___')
@@ -34,8 +41,12 @@ def compare_snmpS5():
     #     if snmpS5.get('ntp') == receivesnmpS5.get('ntp'):
     #         print(True)
     # return True
+
+
 def main():
     compare_snmpS5()
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main()

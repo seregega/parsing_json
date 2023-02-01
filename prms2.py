@@ -26,7 +26,8 @@ def compare_prms2():
         #     print("SYS_UPTIME: PASS")
         # else:
         #     print("SYS_UPTIME: ___=====FAIL=====___")
-        print(type(prms2.get('SYS_UPTIME')))
+        #print(type(prms2.get('SYS_UPTIME')))
+        #'int'
         if prms2.get("SYS_UPTIME") > 0:
             print("SYS_UPTIME: PASS")
         else:
