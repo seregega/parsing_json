@@ -7,15 +7,8 @@ from pickle import dumps
 def compare_snmpS():
     r4 = requests.get('http://192.168.0.242/snmpS.json')
     print('snpmS')
-    snmpS = r4.text
+    snmpS = r4.json()
     print(snmpS)
-    snmpS = {"s_serv1":"192.168.0.101",
-"s_serv2":"0.0.0.0",
-"s_serv3":"0.0.0.0",
-"s_serv4":"0.0.0.0",
-"s_serv5":"0.0.0.0",
-"r_com":"public",
-"w_com":"public"}
 
     error = []
     with open("snmpS.json", 'r') as test_data:

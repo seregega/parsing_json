@@ -7,23 +7,19 @@ from pickle import dumps
 def compare_alarm():
     r3 = requests.get('http://192.168.0.242/alarm.json')
     print('alarm.json')
-    alarm = r3.text
+    alarm = r3.json()
     print(alarm)
-    alarm = {"up": 50,
-"down": 50,
-"load":100}
-
-    error = []
+    param_alarm = ['up', 'down', 'load']
     with open("alarm.json", 'r') as test_data:
         receivealarm = json.loads(test_data.read())
         print(receivealarm)
-        if alarm.get("up") == receivealarm.get("up"):
-            print(True)
-        if alarm.get('down') == alarm.get('down'):
-            print(True)
-        if alarm.get('load') == receivealarm.get('load'):
-            print(True)
-    return True
+    for i in param_alarm:
+        if alarm.get(i) == receivealarm.get(i):
+            print(i, ': PASS')
+        else:
+            print(i, '- FAIL', receivealarm.get(i))
+    print('\n')
+
 def main():
     compare_alarm()
 # Press the green button in the gutter to run the script.

@@ -6,30 +6,29 @@ import requests
 from pickle import dumps
 def compare_snmpS6():
     r9 = requests.get('http://192.168.0.242/snmpS6.json')
+    snmpS6 = r9.json()
     print('snmpS6')
-    snmpS6 = {"s-cron-name1":"short_akb_test",
-"s-cron-range1":"   0",
-"s-cron-date1":"0.0.0 0:0",
-"s-cron-name2":"relay_out",
-"s-cron-range2":"   0",
-"s-cron-date2":"0.0.0 0:0"}
-    print(type(snmpS6))
-    error = []
+    param_snmpS6 = ['s-cron-name1', 's-cron-range1', 's-cron-date1', 's-cron-name2', 's-cron-range2', 's-cron-date2']
     with open("snmpS6.json", 'r') as test_data:
         receivesnmpS6 = json.loads(test_data.read())
-        print(type(receivesnmpS6))
-        if snmpS6.get('s-cron-name1') == receivesnmpS6.get('s-cron-name1'):
-            print(True)
-        if snmpS6.get('s-cron-range1') == receivesnmpS6.get('s-cron-range1'):
-            print(True)
-        if snmpS6.get('s-cron-date1') == receivesnmpS6.get('s-cron-date1'):
-            print(True)
-        if snmpS6.get('s-cron-name2') == receivesnmpS6.get('s-cron-name2'):
-            print(True)
-        if snmpS6.get('s-cron-range2') == receivesnmpS6.get('s-cron-range2'):
-            print(True)
-        if snmpS6.get('s-cron-date2') == receivesnmpS6.get('s-cron-date2'):
-            print(True)
+    for i in param_snmpS6:
+        if snmpS6.get(i) == receivesnmpS6.get(i):
+            print(i, ': PASS')
+        else:
+            print(i, '- FAIL', receivesnmpS6.get(i))
+    print('\n')
+        # if snmpS6.get('s-cron-name1') == receivesnmpS6.get('s-cron-name1'):
+        #     print(True)
+        # if snmpS6.get('s-cron-range1') == receivesnmpS6.get('s-cron-range1'):
+        #     print(True)
+        # if snmpS6.get('s-cron-date1') == receivesnmpS6.get('s-cron-date1'):
+        #     print(True)
+        # if snmpS6.get('s-cron-name2') == receivesnmpS6.get('s-cron-name2'):
+        #     print(True)
+        # if snmpS6.get('s-cron-range2') == receivesnmpS6.get('s-cron-range2'):
+        #     print(True)
+        # if snmpS6.get('s-cron-date2') == receivesnmpS6.get('s-cron-date2'):
+        #     print(True)
 
 def main():
     compare_snmpS6()
