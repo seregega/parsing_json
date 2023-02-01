@@ -5,7 +5,6 @@
 import json
 import math
 import os
-from re import T
 import requests
 from pickle import dumps
 

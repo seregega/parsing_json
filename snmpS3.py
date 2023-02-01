@@ -1,7 +1,6 @@
 import json
 import math
 import os
-from re import T
 import requests
 from pickle import dumps
 def compare_snmpS3():
