@@ -23,7 +23,7 @@ def compareprms(test, run):
         if (math.floor(float(dictEtalon.get('commands')[0].get(i)))) == dictReceive.get(i):
             print(i, ': PASS')
         else:
-            print(i, '- ___=====FAIL=====___', dictReceive.get(i))
+            print(i, '___=====FAIL=====___', dictReceive.get(i))
     print('\n')
 
 def main():

@@ -16,8 +16,9 @@ def compare_snmpS2():
         if snmpS2.get(i) == receivesnmpS2.get(i):
             print(i, ': PASS')
         else:
-            print(i, '- FAIL', receivesnmpS2.get(i))
+            print(i, '___=====FAIL=====___', receivesnmpS2.get(i))
     print('\n')
+    # print(snmpS2['Dinp'])
     # with open("snmpS2.json", 'r') as test_data:
     #     receivesnmpS2 = test_data.read()
     #     print(len(snmpS2), len(receivesnmpS2))

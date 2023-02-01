@@ -14,7 +14,7 @@ def compare_snmpS6():
         if snmpS6.get(i) == receivesnmpS6.get(i):
             print(i, ': PASS')
         else:
-            print(i, '- FAIL', receivesnmpS6.get(i))
+            print(i, '___=====FAIL=====___', receivesnmpS6.get(i))
     print('\n')
         # if snmpS6.get('s-cron-name1') == receivesnmpS6.get('s-cron-name1'):
         #     print(True)

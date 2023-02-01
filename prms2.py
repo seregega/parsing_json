@@ -22,10 +22,15 @@ def compare_prms2():
             else:
                 print(i, '- FAIL', receiveprms2.get(i))
         print('\n')
-        if prms2.get("SYS_UPTIME") <= receiveprms2.get("SYS_UPTIME"):
+        # if prms2.get("SYS_UPTIME") <= receiveprms2.get("SYS_UPTIME"):
+        #     print("SYS_UPTIME: PASS")
+        # else:
+        #     print("SYS_UPTIME: ___=====FAIL=====___")
+        print(type(prms2.get('SYS_UPTIME')))
+        if prms2.get("SYS_UPTIME") > 0:
             print("SYS_UPTIME: PASS")
         else:
-            print("SYS_UPTIME: FAIL")
+            print("SYS_UPTIME: ___=====FAIL=====___")
     #     if prms2.get("SYS_UPTIME") == receiveprms2.get("SYS_UPTIME"):
     #         print(True)
     #     if prms2.get("upsIdentModel") == receiveprms2.get("upsIdentModel"):

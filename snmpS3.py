@@ -16,9 +16,8 @@ def compare_snmpS3():
         if snmpS3.get(i) == receivesnmpS3.get(i):
             print(i, ': PASS')
         else:
-            print(i, '- FAIL', receivesnmpS3.get(i))
+            print(i, '___=====FAIL=====___', receivesnmpS3.get(i))
     print('\n')
-    # error = []
     # with open("snmpS3.json", 'r') as test_data:
     #     receivesnmpS3 = test_data.read()
     #     print(len(snmpS3), len(receivesnmpS3))

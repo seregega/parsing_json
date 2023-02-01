@@ -16,12 +16,17 @@ def compare_snmpS5():
         if snmpS5.get(i) == receivesnmpS5.get(i):
             print(i, ': PASS')
         else:
-            print(i, '- FAIL', receivesnmpS5.get(i))
+            print(i, '___=====FAIL=====___', receivesnmpS5.get(i))
     print('\n')
     if snmpS5.get('time') <= receivesnmpS5.get('time'):
         print('time: PASS')
     else:
-        print('time: FAIL')
+        print('time: ___=====FAIL=====___')
+    print(type(snmpS5.get('time')))
+    if snmpS5.get('time') != '':
+        print('time: PASS')
+    else:
+        print('time: ___=====FAIL=====___')
     #     if snmpS5.get("belt") == receivesnmpS5.get("belt"):
     #         print(True)
     #     if snmpS5.get('time_mode') == receivesnmpS5.get('time_mode'):
